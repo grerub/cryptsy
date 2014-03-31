@@ -114,6 +114,17 @@ jar.save('path/to/cookies.txt', session: true)
 
 ## Security concerns
 
+### SSL verification
+
+The certificate for `https://api.cryptsy.com` is invalid. Therefore, any clients that connect to it
+must disable SSL verification. **This opens up the possibility for a MITM attack.**
+
+Until this is fixed, avoid experimenting with the JSON client on untrusted networks until this
+is corrected. The web client does not have this vulnerability, the `https://www.cryptsy.com` certificate
+is correct.
+
+### Plaintext credentials
+
 Using both clients will result in a large number of credentials needing to be stored in plaintext.
 
 This includes the following:
