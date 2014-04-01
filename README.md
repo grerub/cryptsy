@@ -2,6 +2,8 @@
 
 Provides an idiomatic Ruby client for the authenticated Cryptsy API
 
+[![Gem Release](http://img.shields.io/gem/v/cryptsy.svg)](http://rubygems.org/gems/cryptsy)
+
 ## JSON client
 
 Grab your API keys from the Crypsty website
