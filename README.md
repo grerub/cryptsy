@@ -161,8 +161,3 @@ This includes the following:
 
 Therefore, you should isolate the use of this client away from a public-facing service. On a separate VM,
 you can use a background worker process, like Sidekiq or Resque.
-
-## To-do
-
-- [FIX] Add error handling to web client
-- [FEAT] Add auto-confirm for emailed confirmation links
