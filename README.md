@@ -112,6 +112,30 @@ jar.cleanup
 jar.save('path/to/cookies.txt', session: true)
 ```
 
+## Confirmation email polling
+
+Take automation to the next level! Using `ConfirmationPoller`, you can scan the email account associated with your
+Cryptsy account. Combining this with the web client allows you to automatically confirm:
+
+- Trusted addresses
+- Withdrawals to untrusted addresses
+
+Refer to `examples/gmail_poller.rb` to see basic integration with Gmail. Combine it with the web client like so:
+
+```ruby
+adapter = GmailAdapter.new('GMAIL USERNAME', 'GMAIL PASSWORD')
+web_client = Cryptsy::WebClient.new('CRYPTSY USERNAME', 'CRYPTSY PASSWORD', 'TFA SECRET')
+poller = Cryptsy::ConfirmationPoller.new(adapter, CONFIRM_TRUSTED_ADDRESS_PATTERN)
+
+poller.run_until_found.each do |link|
+  web_client.get(link)
+end
+
+adapter.logout
+```
+
+It's recommended to setup an application-specific password instead of using your primary Gmail password.
+
 ## Security concerns
 
 ### SSL verification
