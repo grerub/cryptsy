@@ -85,7 +85,12 @@ module Cryptsy
     end
 
     def create_order(market_id, order_type, quantity, price)
-      call(:createorder, marketid: market_id, ordertype: order_type, quantity: quantity, price: price)
+      call(:createorder,
+        marketid: market_id,
+        ordertype: order_type,
+        quantity: format_number(quantity),
+        price: format_number(price)
+      )
     end
 
     def cancel_order(order_id)
@@ -109,7 +114,11 @@ module Cryptsy
     end
 
     def calculate_fees(order_type, quantity, price)
-      call(:calculatefees, ordertype: order_type, quantity: quantity, price: price)
+      call(:calculatefees,
+        ordertype: order_type,
+        quantity: format_number(quantity),
+        price: format_number(price)
+      )
     end
 
     def generate_new_address(currency)
@@ -164,6 +173,12 @@ module Cryptsy
       else
         body
       end
+    end
+
+    # @param [Numeric] number
+    # @return [String]
+    def format_number(number)
+      format('%.8f', number)
     end
 
     # @param [Object] code
