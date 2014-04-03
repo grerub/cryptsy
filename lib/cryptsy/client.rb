@@ -159,7 +159,11 @@ module Cryptsy
         raise ClientError, body.error
       end
 
-      body.return
+      if body.return
+        body.return
+      else
+        body
+      end
     end
 
     # @param [Object] code
