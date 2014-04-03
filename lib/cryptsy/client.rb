@@ -29,6 +29,10 @@ module Cryptsy
       call(:getinfo)
     end
 
+    def balance(currency_code)
+      info.balances_available.fetch(currency_code.upcase).to_f
+    end
+
     def markets
       call(:getmarkets)
     end
