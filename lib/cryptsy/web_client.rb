@@ -80,7 +80,6 @@ module Cryptsy
         'data[Withdrawal][fee]' => '1.00000000',
         'data[Withdrawal][wdamount]' => amount,
         'data[Withdrawal][address]' => address,
-        'data[Withdrawal][approvedaddress]' => '',
         'data[Withdrawal][existing_password]' => @password,
         'data[Withdrawal][pincode]' => @tfa.now,
       }
