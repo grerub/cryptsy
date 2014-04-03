@@ -131,7 +131,7 @@ module Cryptsy
     def call(method_name, params = {})
       request = {
         method: method_name,
-        nonce: Time.now.to_i
+        nonce: (Time.now.to_f * 1000).to_i
       }.merge(params)
 
       body = URI.encode_www_form(request)
